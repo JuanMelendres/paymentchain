@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable int id) {
+    public ResponseEntity<Customer> getCustomer(@PathVariable long id) {
         log.info("Get customer with id {}", id);
         try {
             Optional<Customer> existingCustomer = customerService.getCustomer(id);
@@ -61,11 +61,11 @@ public class CustomerController {
         }
     }
 
-    @PutMapping()
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-        log.info("Update customer with id {}", customer.getId());
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @RequestBody Customer customer) {
+        log.info("Update customer with id {}", id);
         try {
-            Optional<Customer> customerOptional = customerService.updateCustomer(customer);
+            Optional<Customer> customerOptional = customerService.updateCustomer(id, customer);
             return customerOptional
                     .map(updatedCustomer -> new ResponseEntity<>(updatedCustomer, HttpStatus.OK))
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -77,7 +77,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomer(@PathVariable int id) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable long id) {
         log.info("Delete customer with id {}", id);
         try {
             Optional<Customer> customerOptional = customerService.deleteCustomer(id);

@@ -39,8 +39,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> updateCustomer(Customer customer) {
-        Optional<Customer> customerOptional = this.customerRepository.findById(customer.getId());
+    public Optional<Customer> updateCustomer(long id, Customer customer) {
+        Optional<Customer> customerOptional = this.customerRepository.findById(id);
         if (customerOptional.isPresent()) {
 
             log.info("Updating customer with id " + customer.getId());
