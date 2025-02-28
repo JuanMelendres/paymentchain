@@ -34,12 +34,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable long id) {
+    public ResponseEntity<Product> getProduct(@PathVariable("id") long id) {
         log.info("Get product with id {}", id);
         try {
-            Optional<Product> existingCustomer = this.productService.getProduct(id);
-            return existingCustomer
-                    .map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
+            Optional<Product> existingProduct = this.productService.getProduct(id);
+            return existingProduct
+                    .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
         }
         catch (Exception e) {
@@ -50,7 +50,6 @@ public class ProductController {
 
     @PostMapping()
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        log.info("Create product {}", product.getId());
         try {
             Product newProduct = this.productService.createProduct(product);
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
@@ -62,7 +61,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product product) {
         log.info("Update product with id {}", id);
         try {
             Optional<Product> productExist = this.productService.updateProduct(id, product);
@@ -77,7 +76,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Product> deleteProduct(@PathVariable long id) {
+    public ResponseEntity<Product> deleteProduct(@PathVariable("id") long id) {
         log.info("Delete product with id {}", id);
         try {
             Optional<Product> productExist = this.productService.deleteProduct(id);
