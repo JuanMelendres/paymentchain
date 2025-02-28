@@ -26,14 +26,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Optional<Customer> getCustomer(long id) {
-        log.info("Get customer with id " + id);
+        log.info("Get customer with id {}", id);
 
         return this.customerRepository.findById(id);
     }
 
     @Override
     public Customer createCustomer(Customer customer) {
-        log.info("Creating new customer: " + customer);
+        log.info("Creating new customer: {}", customer);
 
         return this.customerRepository.save(customer);
     }
@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
         if (customerOptional.isPresent()) {
 
-            log.info("Updating customer with id " + customer.getId());
+            log.info("Updating customer with id {}", customer.getId());
 
             customerOptional.get().setName(customer.getName());
             customerOptional.get().setPhone(customer.getPhone());
@@ -60,8 +60,8 @@ public class CustomerServiceImpl implements CustomerService {
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
 
         if (customerOptional.isPresent()) {
-            log.info("Deleting customer with id: " + id);
-            log.info("Customer: " + customerOptional.get().toString());
+            log.info("Deleting customer with id: {}", id);
+            log.info("Customer: {}", customerOptional.get().toString());
             this.customerRepository.delete(customerOptional.get());
         }
 
