@@ -45,9 +45,6 @@ public class CustomerServiceImpl implements CustomerService {
 
             log.info("Updating customer with id {}", customer.getId());
 
-            customerOptional.get().setName(customer.getName());
-            customerOptional.get().setPhone(customer.getPhone());
-
             this.customerRepository.save(customerOptional.get());
 
             return customerOptional;
@@ -61,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         if (customerOptional.isPresent()) {
             log.info("Deleting customer with id: {}", id);
-            log.info("Customer: {}", customerOptional.get().toString());
+            log.info("Customer: {}", customerOptional.get());
             this.customerRepository.delete(customerOptional.get());
         }
 
