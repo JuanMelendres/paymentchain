@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id) {
+    public ResponseEntity<Customer> getCustomer(@PathVariable long id) {
         log.info("Get customer with id {}", id);
         try {
             Optional<Customer> existingCustomer = customerService.getCustomer(id);
@@ -62,7 +62,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @RequestBody Customer customer) {
         log.info("Update customer with id {}", id);
         try {
             Optional<Customer> customerOptional = customerService.updateCustomer(id, customer);
@@ -77,7 +77,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomer(@PathVariable("id") long id) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable long id) {
         log.info("Delete customer with id {}", id);
         try {
             Optional<Customer> customerOptional = customerService.deleteCustomer(id);

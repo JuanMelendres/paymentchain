@@ -34,20 +34,26 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer createCustomer(Customer customer) {
         log.info("Creating new customer: {}", customer);
-
+        customer.getProducts().forEach(product -> product.setCustomer(customer));
         return this.customerRepository.save(customer);
     }
 
     @Override
     public Optional<Customer> updateCustomer(long id, Customer customer) {
-        Optional<Customer> customerOptional = this.customerRepository.findById(id);
-        if (customerOptional.isPresent()) {
+        Optional<Customer> customerExist = this.customerRepository.findById(id);
+        if (customerExist.isPresent()) {
 
             log.info("Updating customer with id {}", customer.getId());
 
-            this.customerRepository.save(customerOptional.get());
+            customerExist.get().setCode(customer.getCode());
+            customerExist.get().setName(customer.getName());
+            customerExist.get().setIban(customer.getIban());
+            customerExist.get().setPhone(customer.getPhone());
+            customerExist.get().setSurname(customer.getSurname());
 
-            return customerOptional;
+            this.customerRepository.save(customerExist.get());
+
+            return customerExist;
         }
         return Optional.empty();
     }
