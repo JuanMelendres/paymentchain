@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-    
+
     @Override
     public List<Product> getProducts() {
         log.info("Get products");
