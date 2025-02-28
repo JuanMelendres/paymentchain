@@ -15,7 +15,6 @@
     <name>product</name>
     <description>product</description>
 
-
     <build>
         <plugins>
             <plugin>
