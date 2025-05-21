@@ -90,4 +90,19 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/full")
+    public ResponseEntity<Customer> getCustomerByCode(@RequestParam String code) {
+        log.info("Get customer with code {}", code);
+        try {
+            Optional<Customer> existingCustomer = customerService.getCustomerByCode(code);
+            return existingCustomer
+                    .map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        }
+        catch (Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

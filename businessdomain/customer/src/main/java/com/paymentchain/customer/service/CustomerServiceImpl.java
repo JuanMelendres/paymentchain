@@ -1,8 +1,12 @@
 package com.paymentchain.customer.service;
 
 import com.paymentchain.customer.entities.Customer;
+import com.paymentchain.customer.entities.CustomerProduct;
 import com.paymentchain.customer.repository.CustomerRepository;
+import com.paymentchain.customer.rest.ProductClient;
+import com.paymentchain.customer.rest.TransactionClient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +17,16 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final ProductClient productClient;
+    private final TransactionClient transactionClient;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(
+            CustomerRepository customerRepository,
+            ProductClient productClient,
+            TransactionClient transactionClient) {
         this.customerRepository = customerRepository;
+        this.productClient = productClient;
+        this.transactionClient = transactionClient;
     }
 
     @Override
@@ -69,6 +80,25 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         return Optional.empty();
+    }
+
+    public Optional<Customer> getCustomerByCode(String code) {
+        log.info("Get customer with code {}", code);
+
+        Customer customer = this.customerRepository.findByCode(code);
+        List<CustomerProduct> products = customer.getProducts();
+
+        products.forEach(product -> {
+            String productName = this.productClient.getProductName(product.getId());
+            product.setProductName(productName);
+        });
+
+        // Find all transactions that belong this account number
+        List<?> transactions = this.transactionClient.getTransactions(customer.getIban());
+        customer.setTransactions(transactions);
+
+        return Optional.of(customer);
+
     }
 
 }
