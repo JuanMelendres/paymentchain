@@ -3,6 +3,8 @@ package com.paymentchain.customer.controller;
 import com.paymentchain.customer.entities.Customer;
 import com.paymentchain.customer.service.CustomerServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,9 @@ import java.util.Optional;
 public class CustomerController {
 
     private final CustomerServiceImpl customerService;
+
+    @Autowired
+    private Environment env;
 
     public CustomerController(CustomerServiceImpl customerService) {
         this.customerService = customerService;
@@ -104,5 +109,11 @@ public class CustomerController {
             log.error(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/check")
+    public ResponseEntity<String> getCheckProfile() {
+        String profile = env.getProperty("custom.activeprofileName");
+        return new ResponseEntity<>("Hello your property value is: " + profile, HttpStatus.OK);
     }
 }
