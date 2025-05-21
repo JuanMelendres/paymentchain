@@ -16,6 +16,8 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>transaction</module>
+        <module>product</module>
         <module>customer</module>
     </modules>
 

@@ -10,8 +10,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.paymentchain.infraestructuradomain</groupId>
-    <artifactId>infraestructuradomain</artifactId>
+    <groupId>com.paymentchain.infrastructuredomain</groupId>
+    <artifactId>infrastructuredomain</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
