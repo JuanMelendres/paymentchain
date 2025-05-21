@@ -1,0 +1,28 @@
+# Profile
+custom:
+  activeprofileName: production
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: false # Disabling the Swagger-ui
+
+# Server port
+server:
+  port: 48152
+
+spring:
+  application:
+    name: customer
+  # DataBase Config
+  jpa:
+    show-sql:true
+  datasource:
+    url: jdbc:h2:mem:customer
+    username: sa
+    password: qwerty
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
