@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1bdea5a-6356-452a-b836-6ab7b85feba2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="b1bdea5a-6356-452a-b836-6ab7b85feba2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,14 +174,6 @@
       <module name="customer (1)" />
       <option name="filePath" />
       <method v="2" />
-    </configuration>
-    <configuration name="ConfigServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="configServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymentchain.infrastructuredomain.configserver.ConfigServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="configServer" />
