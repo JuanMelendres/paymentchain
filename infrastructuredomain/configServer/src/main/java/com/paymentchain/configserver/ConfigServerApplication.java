@@ -1,4 +1,4 @@
-package com.paymentchain.infrastructuredomain.configserver;
+package com.paymentchain.configserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

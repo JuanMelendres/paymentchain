@@ -43,7 +43,7 @@ public class TransactionClient {
         this.webClient = wcb.clone()
                 .clientConnector(new ReactorClientHttpConnector(this.httpClient))
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .baseUrl("http://localhost:8082/api/v1/transaction")
+                .baseUrl("http://BUSINESSDOMAIN-TRANSACTION/api/v1/transaction")
                 .build();
     }
 

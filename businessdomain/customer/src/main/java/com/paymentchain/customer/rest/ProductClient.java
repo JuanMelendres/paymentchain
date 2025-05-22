@@ -5,6 +5,8 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.epoll.EpollChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
@@ -42,7 +44,7 @@ public class ProductClient {
         this.webClient = wcb.clone()
                 .clientConnector(new ReactorClientHttpConnector(this.httpClient))
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .baseUrl("http://localhost:8083/api/v1/product")
+                .baseUrl("http://BUSINESSDOMAIN-PRODUCT/api/v1/product")
                 .build();
     }
 
