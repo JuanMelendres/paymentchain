@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1bdea5a-6356-452a-b836-6ab7b85feba2" name="Changes" comment="" />
+    <list default="true" id="b1bdea5a-6356-452a-b836-6ab7b85feba2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/config/WebClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/ProductClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/ProductClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/TransactionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/TransactionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/product/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/product/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/transaction/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/transaction/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/config-client-local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/config-client-local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructuredomain/configServer/src/main/java/com/paymentchain/configserver/ConfigServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructuredomain/configServer/src/main/java/com/paymentchain/configserver/ConfigServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/src/main/java/com/paymentchain/eurekaserver/EurekaServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/src/main/java/com/paymentchain/eurekaserver/EurekaServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructuredomain/eurekaServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,6 +118,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.CustomerApplication.executor": "Run",
+    "Spring Boot.EurekaServerApplication.executor": "Run",
     "Spring Boot.ProductApplication (1).executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
     "Spring Boot.TransactionApplication (1).executor": "Run",
@@ -148,9 +163,9 @@
       <command value="mvn clena install" />
       <command value="mvn --update-snapshots" />
       <command value="mvn compile" />
-      <command value="mvn clean" />
       <command value="mvn install" />
       <command value="mvn clean install" />
+      <command value="mvn clean" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -163,7 +178,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CustomerApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="customer (1)" />
       <method v="2">
@@ -186,6 +201,13 @@
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="customer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymentchain.customer.CustomerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eurekaServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymentchain.eurekaserver.EurekaServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
