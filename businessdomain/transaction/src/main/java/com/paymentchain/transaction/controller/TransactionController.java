@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/transaction")
+@RequestMapping("/v1/transaction")
 public class TransactionController {
 
     private final TransactionServiceImpl transactionService;

@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/v1/customer")
 public class CustomerController {
 
     private final CustomerServiceImpl customerService;
