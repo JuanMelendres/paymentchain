@@ -8,12 +8,15 @@ import io.netty.handler.timeout.WriteTimeoutHandler;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.netty.http.client.HttpClient;
 
+import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -48,12 +51,23 @@ public class ProductClient {
                 .build();
     }
 
-    public String getProductName(long id) {
-        JsonNode block =  webClient.get()
-                .uri("/" + id)
-                .retrieve()
-                .bodyToMono(JsonNode.class)
-                .block();
+    public String getProductName(long id) throws UnknownHostException {
+        JsonNode block = null;
+        try {
+            block =  webClient.get()
+                    .uri("/" + id)
+                    .retrieve()
+                    .bodyToMono(JsonNode.class)
+                    .block();
+        }
+        catch (WebClientResponseException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                return "";
+            }
+            else  {
+                throw new UnknownHostException(e.getMessage());
+            }
+        }
 
         assert block != null;
         return block.get("name").asText();

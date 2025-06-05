@@ -2,13 +2,15 @@ package com.paymentchain.customer.service;
 
 import com.paymentchain.customer.entities.Customer;
 import com.paymentchain.customer.entities.CustomerProduct;
+import com.paymentchain.customer.exception.BusinessRuleException;
 import com.paymentchain.customer.repository.CustomerRepository;
 import com.paymentchain.customer.rest.ProductClient;
 import com.paymentchain.customer.rest.TransactionClient;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +45,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer createCustomer(Customer customer) {
+    public Customer createCustomer(Customer customer) throws BusinessRuleException, UnknownHostException {
         log.info("Creating new customer: {}", customer);
-        customer.getProducts().forEach(product -> product.setCustomer(customer));
+//        customer.getProducts().forEach(product -> product.setCustomer(customer));
+        if (customer.getProducts() != null) {
+            for (CustomerProduct product : customer.getProducts()) {
+                String productName = this.productClient.getProductName(Long.parseLong(product.getProductName()));
+                if (productName.isBlank()) {
+                    throw new BusinessRuleException("1025",
+                            "Validation Error, Prodcut with id " + product.getId() + "doesn't exist",
+                            HttpStatus.PRECONDITION_FAILED);
+                } else {
+                    product.setCustomer(customer);
+                }
+            }
+        }
         return this.customerRepository.save(customer);
     }
 
@@ -89,7 +103,12 @@ public class CustomerServiceImpl implements CustomerService {
         List<CustomerProduct> products = customer.getProducts();
 
         products.forEach(product -> {
-            String productName = this.productClient.getProductName(product.getId());
+            String productName = null;
+            try {
+                productName = this.productClient.getProductName(product.getId());
+            } catch (UnknownHostException e) {
+                log.error("Unknown Host Exception", e);
+            }
             product.setProductName(productName);
         });
 

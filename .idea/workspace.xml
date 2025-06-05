@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1bdea5a-6356-452a-b836-6ab7b85feba2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/common/StandardizedApiExceptionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/exception/ApiExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/exception/BusinessRuleException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/product/src/main/java/com/paymentchain/product/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/product/src/main/java/com/paymentchain/product/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/product/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/product/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/transaction/src/main/java/com/paymentchain/transaction/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/transaction/src/main/java/com/paymentchain/transaction/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/businessdomain/transaction/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/transaction/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/ProductClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/rest/ProductClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/businessdomain/customer/src/main/java/com/paymentchain/customer/service/CustomerServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +277,7 @@
       <workItem from="1747855105816" duration="2830000" />
       <workItem from="1747950691525" duration="669000" />
       <workItem from="1748892535168" duration="4770000" />
-      <workItem from="1749057212936" duration="655000" />
+      <workItem from="1749057212936" duration="7875000" />
     </task>
     <servers />
   </component>
