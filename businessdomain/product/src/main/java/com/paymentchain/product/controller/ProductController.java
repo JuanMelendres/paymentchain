@@ -2,6 +2,7 @@ package com.paymentchain.product.controller;
 
 import com.paymentchain.product.entities.Product;
 import com.paymentchain.product.service.ProductServiceImpl;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,9 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts() {
         try {
             List<Product> products = this.productService.getProducts();
+            if(products.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
             return new ResponseEntity<>(products, HttpStatus.OK);
         }
         catch (Exception e) {
@@ -49,7 +53,7 @@ public class ProductController {
     }
 
     @PostMapping()
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         try {
             Product newProduct = this.productService.createProduct(product);
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);

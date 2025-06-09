@@ -1,13 +1,16 @@
 package com.paymentchain.transaction.controller;
 
 import com.paymentchain.transaction.entities.Transaction;
+import com.paymentchain.transaction.exception.BusinessRuleException;
 import com.paymentchain.transaction.service.TransactionServiceImpl;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
@@ -25,6 +28,9 @@ public class TransactionController {
     public ResponseEntity<List<Transaction>> getTransactions() {
         try {
             List<Transaction> transaction = transactionService.getTransactions();
+            if(transaction.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
             return new ResponseEntity<>(transaction, HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -47,13 +53,15 @@ public class TransactionController {
     }
 
     @PostMapping()
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<?> createTransaction(@Valid @RequestBody Transaction transaction) {
         log.info("Create transaction {}", transaction.getId());
         try {
-            Transaction newTransaction = transactionService.createTransaction(transaction);
-            return new ResponseEntity<>(newTransaction, HttpStatus.CREATED);
+            Transaction saved = transactionService.createTransaction(transaction);
+            return new ResponseEntity<>(saved, HttpStatus.CREATED);
+        } catch (BusinessRuleException e) {
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), e.getHttpStatus());
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error("Unexpected error", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

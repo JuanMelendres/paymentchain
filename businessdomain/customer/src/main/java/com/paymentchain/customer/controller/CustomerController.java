@@ -33,9 +33,7 @@ public class CustomerController {
             if (customers.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            else {
-                return new ResponseEntity<>(customers, HttpStatus.OK);
-            }
+            return new ResponseEntity<>(customers, HttpStatus.OK);
         }
         catch (Exception e) {
             log.error(e.getMessage());
@@ -48,15 +46,8 @@ public class CustomerController {
         log.info("Get customer with id {}", id);
         try {
             Optional<Customer> existingCustomer = customerService.getCustomer(id);
-            if (existingCustomer.isPresent()) {
-                return new ResponseEntity<>(existingCustomer.get(), HttpStatus.OK);
-            }
-            else {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-//            return existingCustomer
-//                    .map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
-//                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+            return existingCustomer.map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
         }
         catch (Exception e) {
             log.error(e.getMessage());
